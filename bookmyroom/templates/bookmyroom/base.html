@@ -1,15 +1,33 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <title>New Sac Room Booking Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'css/timepicki.css' %}">
+<script src="{% static 'js/timepicki.js' %}"></script>
+<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+<script>
+    $(function () {
+        $(" .timepicker ").timepicki();
+    });
+</script>
 <body>
+<ul class="w3-navbar w3-black">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'book_new' %}">Book</a></li>
+    <li class="w3-right"><a class="w3-red" href="{% url 'logout' %}">Logout</a></li>
+</ul>
 <div class="w3-display-container" style="margin-bottom:50px">
-    <ul class="w3-navbar w3-light-grey w3-border">
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'book_new' %}" >Book</a></li>
-        <li class="w3-right"><a class="w3-black" href="{% url 'logout' %}">Logout</a></li>
-    </ul>
     <img src="http://www.iitg.ernet.in/indogerman2016/images/iitg_6.jpg" style="width:100%">
     <div class="w3-display-bottomleft w3-container w3-amber w3-hover-orange w3-hide-small"
          style="bottom:10%;opacity:0.7;width:70%">
