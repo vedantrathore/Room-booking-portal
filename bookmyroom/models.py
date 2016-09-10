@@ -7,6 +7,9 @@ class User(models.Model):
     #rooms = models.ManyToManyField(Room)
     email = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.name
+
 class Room(models.Model):
     ROOM_CHOICES = (
         ('Conference_Hall', 'Conference Hall'),
@@ -16,6 +19,9 @@ class Room(models.Model):
     )
     room_name = models.TextField(choices=ROOM_CHOICES,default='Conference_Hall')
     room_occupancy = models.IntegerField(null=True)
+
+    def __unicode__(self):
+        return self.room_name
     
 
 class Room_Booking(models.Model):
@@ -26,3 +32,6 @@ class Room_Booking(models.Model):
     out_time = models.TimeField(blank=True, null=True)
     book_time = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.room_name.room_name
