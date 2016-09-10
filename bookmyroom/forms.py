@@ -9,6 +9,6 @@ class BookForm(forms.ModelForm):
         fields = ['room_name','date', 'in_time', 'out_time']
         widgets = {
             'date': forms.DateInput(attrs={'id':'datepicker'}),
-            'in_time':forms.TimeInput(attrs={'class':'timepicker'}),
-            'out_time': forms.TimeInput(attrs={'class': 'timepicker'}),
+            'in_time': forms.TimeInput(attrs={'id': 'timepicker'}),
+            'out_time': forms.TimeInput(attrs={'id': 'timepicker'}),
         }

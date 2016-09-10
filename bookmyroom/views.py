@@ -1,6 +1,6 @@
 from django.shortcuts import *
 from django.views.decorators.csrf import csrf_exempt
-
+from django.db.models.loading import get_model
 from .forms import BookForm
 from .models import *
 
@@ -13,7 +13,7 @@ def index(request):
     if 'user_id' in request.COOKIES:
         return HttpResponseRedirect('login')
     error = ""
-    return render(request, 'bookmyroom/index.html', {'error_already_exits': True})  # possible mistake
+    return render(request, 'bookmyroom/index.html', {'error_already_exits': False})  # possible mistake
 
 
 @csrf_exempt
@@ -90,17 +90,18 @@ def book_new(request):
     if request.method == "POST":
         form = BookForm(request.POST)
         if form.is_valid():
+            # old_booking=Room_Booking.objects.get()
             room_booking = form.save(commit=False)
             room_booking.user = User.objects.get(id=request.COOKIES['user_id'])
             room_booking.book_time = timezone.now()
             room_booking.room_status = True  # Implement booking clashes you jackass
             data = form.cleaned_data
-            # if validate_booking(data, room_booking) is 1:
+            # if validate_booking(data, room_booking) == 1:
             #     pass
             # else:
-            #     return redirect(request, 'bookmyroom/book_edit.html', {'error': "timing_clash",'username':room_booking.user.name,'in_time':room_booking.in_time,'out_time':room_booking.out_time})
+            #     return render(request, 'bookmyroom/book_edit.html', {'error': 1,'username':room_booking.user.name,'in_time':room_booking.in_time,'out_time':room_booking.out_time,'form':form})
             room_booking.save()
-            return redirect('book_detail', pk=room_booking.pk)
+            return redirect('my_bookings')
     else:
         form = BookForm()
     return render(request, 'bookmyroom/book_edit.html', {'form': form})
@@ -115,10 +116,16 @@ def validate_booking(data, room_booking):
     original_name = room_booking.room_name.room_name
     original_in_time = room_booking.in_time
     original_out_time = room_booking.out_time
+    print "The name in form is ", name.room_name
+    print "The original name is ", original_name
+    print "The in time in form is  ", in_time
+    print "The out time in form is  ", out_time
+    print "The original in time is ", original_in_time
+    print "The original out time is ", original_out_time
     if original_name != name.room_name:
         return 1
     else:
-        if in_time <= original_out_time and out_time >= original_in_time:
+        if in_time < original_out_time and out_time > original_in_time:
             return 0
         else:
             return 1
@@ -126,6 +133,12 @@ def validate_booking(data, room_booking):
 
 def mail(request, pk):
     pass
+
+
+def my_bookings(request):
+    user = User.objects.get(id=request.COOKIES['user_id'])
+    rooms = Room_Booking.objects.filter(user__name=user.name)
+    return render(request, 'bookmyroom/my_bookings.html', {'rooms': rooms})
 
 
 def book_detail(request, pk):
@@ -142,7 +155,7 @@ def book_edit(request, pk):
             # room_booking.user = request.user
             room_booking.book_time = timezone.now()
             room_booking.save()
-            return redirect('book_detail', pk=room.pk)
+            return redirect('my_bookings')
     else:
         form = BookForm(instance=room)
     return render(request, 'bookmyroom/book_edit.html', {'form': form})

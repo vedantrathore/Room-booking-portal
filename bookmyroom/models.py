@@ -1,11 +1,14 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
 
 class User(models.Model):
     name = models.CharField(max_length=35)
     password = models.CharField(max_length=20)
     #rooms = models.ManyToManyField(Room)
     email = models.CharField(max_length=200)
+
+    # rooms=models.ForeignKey(Room_Booking)
 
     def __unicode__(self):
         return self.name

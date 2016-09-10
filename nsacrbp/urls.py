@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'login',login,name='login'),
     url(r'signup',signup,name='signup'),
     url(r'book/new/$', book_new,name='book_new'),
+    url(r'bookings', my_bookings, name='my_bookings'),
     url(r'book/(?P<pk>\d+)/$', book_detail, name='book_detail'),
     url(r'book/(?P<pk>\d+)/edit/$', book_edit, name='book_edit'),
     url(r'mail/(?P<pk>\d+)/$', mail, name='mail'),
