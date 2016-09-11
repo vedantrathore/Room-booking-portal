@@ -1,181 +1,57 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
-    <style type="text/css">
-        body {
-            background-color: #f4f4f4;
-            color: #5a5656;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            line-height: 1.5em;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        h1 {
-            font-size: 1em;
-        }
-
-        h1, p {
-            margin-bottom: 10px;
-        }
-
-        strong {
-            font-weight: bold;
-        }
-
-        .uppercase {
-            text-transform: uppercase;
-        }
-
-        /* ---------- LOGIN ---------- */
-        #login {
-            margin: 50px auto;
-            width: 300px;
-        }
-
-        form fieldset input[type="text"], input[type="password"] {
-            background-color: #e5e5e5;
-            border: none;
-            border-radius: 3px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            color: #5a5656;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            height: 50px;
-            outline: none;
-            padding: 0px 10px;
-            width: 280px;
-            -webkit-appearance: none;
-        }
-
-        form fieldset input[type="submit"] {
-            background-color: #008dde;
-            border: none;
-            border-radius: 3px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            color: #f4f4f4;
-            cursor: pointer;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            height: 50px;
-            text-transform: uppercase;
-            width: 300px;
-            -webkit-appearance: none;
-        }
-
-        form fieldset a {
-            color: #5a5656;
-            font-size: 10px;
-        }
-
-        form fieldset a:hover {
-            text-decoration: underline;
-        }
-
-        .btn-round {
-            background-color: #5a5656;
-            border-radius: 50%;
-            -moz-border-radius: 50%;
-            -webkit-border-radius: 50%;
-            color: #f4f4f4;
-            display: block;
-            font-size: 12px;
-            height: 50px;
-            line-height: 50px;
-            margin: 30px 125px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 50px;
-        }
-
-        .facebook-before {
-            background-color: #0064ab;
-            border-radius: 3px 0px 0px 3px;
-            -moz-border-radius: 3px 0px 0px 3px;
-            -webkit-border-radius: 3px 0px 0px 3px;
-            color: #f4f4f4;
-            display: block;
-            float: left;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            width: 50px;
-        }
-
-        .facebook {
-            background-color: #0079ce;
-            border: none;
-            border-radius: 0px 3px 3px 0px;
-            -moz-border-radius: 0px 3px 3px 0px;
-            -webkit-border-radius: 0px 3px 3px 0px;
-            color: #f4f4f4;
-            cursor: pointer;
-            height: 50px;
-            text-transform: uppercase;
-            width: 250px;
-        }
-
-        .twitter-before {
-            background-color: #189bcb;
-            border-radius: 3px 0px 0px 3px;
-            -moz-border-radius: 3px 0px 0px 3px;
-            -webkit-border-radius: 3px 0px 0px 3px;
-            color: #f4f4f4;
-            display: block;
-            float: left;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            width: 50px;
-        }
-
-        .twitter {
-            background-color: #1bb2e9;
-            border: none;
-            border-radius: 0px 3px 3px 0px;
-            -moz-border-radius: 0px 3px 3px 0px;
-            -webkit-border-radius: 0px 3px 3px 0px;
-            color: #f4f4f4;
-            cursor: pointer;
-            height: 50px;
-            text-transform: uppercase;
-            width: 250px;
-        }
-    </style>
+    <title>Login Or Signup</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="login">
-    <h1><strong>Welcome.</strong> Please login.</h1>
+<h1><strong>Welcome</strong></h1>
+<h2>Login</h2><br>
+<div class="container">
     <form action="login" method="post">
-        {% csrf_token %}
-        <fieldset>
-            <p><input type="text" required value="Username" name="username"
-                      onBlur="if(this.value=='')this.value='Username'"
-                      onFocus="if(this.value=='Username')this.value='' "></p>
-            <p><input type="password" required value="Password" name="password"
-                      onBlur="if(this.value=='')this.value='Password'"
-                      onFocus="if(this.value=='Password')this.value='' "></p>
-            <p><a href="#">Forgot Password?</a></p>
-            <p><input type="submit" value="Login"></p>
-        </fieldset>
+        <div class="form-group row">
+            {% csrf_token %}
+            <label for="inputloginname" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+                <input type="text" placeholder="Username" class="form-control" id="inputloginname" name="username">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputloginpassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" placeholder="Password" class="form-control" id="inputloginpassword"
+                       name="password">
+            </div>
+        </div>
+        <p><a href="#">Forgot Password?</a></p><br>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
+</div>
+<h2>Signup</h2><br>
+<div class="container">
     <form action="signup" method="post">
-        {% csrf_token %}
-        <fieldset>
-            <p><input type="text" required value="Username" name="username"
-                      onBlur="if(this.value=='')this.value='Username'"
-                      onFocus="if(this.value=='Username')this.value='' "></p>
-            <p><input type="password" required value="Password" name="password"
-                      onBlur="if(this.value=='')this.value='Password'"
-                      onFocus="if(this.value=='Password')this.value='' "></p>
-            <p><input type="text" required value="Email" name="email"
-                      onBlur="if(this.value=='')this.value='E-mail'"
-                      onFocus="if(this.value=='E-mail')this.value='' "></p>
-            <p><input type="submit" value="Signup"></p>
-        </fieldset>
+        <div class="form-group row">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="inputsignupname" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10"><input type="text" placeholder="Username" class="form-control"
+                                              id="inputsignupname" name="username"></div>
+            </div>
+            <div class="form-group row">
+                <label for="inputsignuppassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10"><input type="password" placeholder="Password" class="form-control"
+                                              id="inputsignuppassword" name="password"></div>
+            </div>
+            <div class="form-group row">
+                <label for="inputsignupemail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10"><input type="email" placeholder="Email" class="form-control"
+                                              id="inputsignupemail" name="email"></div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
     </form>
+</div>
+</body>
+</html>
