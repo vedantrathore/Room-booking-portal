@@ -93,46 +93,51 @@ def logout(request):
 def book_new(request):
     if request.method == "POST":
         form = BookForm(request.POST)
-        if form.is_valid():
-            # old_booking=Room_Booking.objects.get()
-            room_booking = form.save(commit=False)
-            room_booking.user = User.objects.get(id=request.COOKIES['user_id'])
-            room_booking.book_time = timezone.now()
-            room_booking.room_status = True  # Implement booking clashes you jackass
-            data = form.cleaned_data
-            # if validate_booking(data, room_booking) == 1:
-            #     pass
-            # else:
-            #     return render(request, 'bookmyroom/book_edit.html', {'error': 1,'username':room_booking.user.name,'in_time':room_booking.in_time,'out_time':room_booking.out_time,'form':form})
-            room_booking.save()
-            return redirect('my_bookings')
+        if form.is_valid() and form.validate_form():
+            #old_booking=Room_Booking.objects.get()
+            # room_booking = form.save(commit=False)
+            # room_booking.user = User.objects.get(id=request.COOKIES['user_id'])
+            # room_booking.book_time = timezone.now()
+            # room_booking.room_status = True  # Implement booking clashes you jackass
+            #data = form.cleaned_data
+            # if validate_booking(data, Room_Booking) == 1:
+            pass
+        else:
+             return render(request, 'bookmyroom/book_edit.html', {'error': 1,'username':room_booking.user.name,'in_time':room_booking.in_time,'out_time':room_booking.out_time,'form':form})
+             room_booking.save()
+             return redirect('my_bookings')
     else:
         form = BookForm()
-    return render(request, 'bookmyroom/book_edit.html', {'form': form})
+        return render(request, 'bookmyroom/book_edit.html', {'form': form})
 
 
 # This method is to check clashes of timings
-def validate_booking(data, room_booking):
-    name = data['room_name']
-    in_time = data['in_time']
-    out_time = data['out_time']
-    # username=room_booking.user.name
-    original_name = room_booking.room_name.room_name
-    original_in_time = room_booking.in_time
-    original_out_time = room_booking.out_time
-    print "The name in form is ", name.room_name
-    print "The original name is ", original_name
-    print "The in time in form is  ", in_time
-    print "The out time in form is  ", out_time
-    print "The original in time is ", original_in_time
-    print "The original out time is ", original_out_time
-    if original_name != name.room_name:
-        return 1
-    else:
-        if in_time < original_out_time and out_time > original_in_time:
-            return 0
-        else:
-            return 1
+# def validate_booking(data, Room_Booking):
+#     name = data['room_name']
+#     in_time = data['in_time']
+#     out_time = data['out_time']
+#     date = data['date']
+#
+#     original_name = Room_Booking.room_name.room_name
+#     original_in_time = Room_Booking.in_time
+#     original_out_time = Room_Booking.out_time
+#     original_date = Room_Booking.date
+#     print "The name in form is ", name.room_name
+#     print "The original name is ", original_name
+#     print "The in time in form is  ", in_time
+#     print "The out time in form is  ", out_time
+#     print "The original in time is ", original_in_time
+#     print "The original out time is ", original_out_time
+#     if original_date != date:
+#       return 1
+#     else:
+#         if original_name != name.room_name:
+#             return 1
+#         else:
+#             if in_time < original_out_time and in_time > original_in_time:
+#                 return 0
+#             else:
+#                 return 1
 
 
 def mail(request, pk):

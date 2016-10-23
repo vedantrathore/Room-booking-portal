@@ -3,22 +3,22 @@
     {% load bootstrap %}
     <h1>New/Edit Booking</h1>
     {% if error == 1 %}
-        {#        <div id="myModal" class="modal fade" role="dialog">#}
-        {#            <div class="modal-dialog">#}
-        {#                <div class="modal-content">#}
-        {#                    <div class="modal-header">#}
-        {#                        <button type="button" class="close" data-dismiss="modal">&times;</button>#}
-        {#                        <h4 class="modal-title">Error</h4>#}
-        {#                    </div>#}
-        {#                    <div class="modal-body">#}
-        {#                        <p>Sorry the room is already booked from {{ in_time }} - {{ out_time }} by {{ username }}</p>#}
-        {#                    </div>#}
-        {#                    <div class="modal-footer">#}
-        {#                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Error</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sorry the room is already booked from {{ in_time }} - {{ out_time }} by {{ username }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <div>
             <p>Sorry the room is already booked from {{ in_time }} - {{ out_time }} by {{ username }}</p>
         </div>
