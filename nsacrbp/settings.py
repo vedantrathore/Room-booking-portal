@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bookmyroom',
     'bootstrapform',
     'dbmail',
+    'django.contrib.sites',
 
 ]
 

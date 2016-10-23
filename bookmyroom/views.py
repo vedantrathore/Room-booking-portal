@@ -1,6 +1,10 @@
 from django.shortcuts import *
 from django.views.decorators.csrf import csrf_exempt
-from django.db.models.loading import get_model
+try:
+    from django.db.models.loading import get_model
+except ImportError:
+    from django.apps import apps
+    get_model = apps.get_model
 from .forms import BookForm
 from .models import *
 
