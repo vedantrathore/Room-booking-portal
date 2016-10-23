@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="869eb7f1-f2ed-48f6-910a-eae9db746946" name="Default" comment="Bug Fixes">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/models.py" afterPath="$PROJECT_DIR$/bookmyroom/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/base.html" afterPath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_detail.html" afterPath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/dashboard.html" afterPath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/my_bookings.html" afterPath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/my_bookings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/views.py" afterPath="$PROJECT_DIR$/bookmyroom/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nsacrbp/settings.py" afterPath="$PROJECT_DIR$/nsacrbp/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/forms.py" afterPath="$PROJECT_DIR$/bookmyroom/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html" afterPath="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html" />
     </list>
     <ignored path="nsacrbp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,14 +49,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookmyroom/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
+            <state relative-caret-position="2430">
               <caret line="162" column="9" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book_edit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/bookmyroom/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -147,18 +151,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding>
-                <marker date="1477225523740" expanded="false" signature="667:683" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -178,8 +170,6 @@
         <option value="$PROJECT_DIR$/bookmyroom/admin.py" />
         <option value="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/error.html" />
         <option value="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/index.html" />
-        <option value="$PROJECT_DIR$/bookmyroom/forms.py" />
-        <option value="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html" />
         <option value="$PROJECT_DIR$/bookmyroom/views.py" />
         <option value="$PROJECT_DIR$/nsacrbp/settings.py" />
         <option value="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/my_bookings.html" />
@@ -189,6 +179,8 @@
         <option value="$PROJECT_DIR$/bookmyroom/urls.py" />
         <option value="$PROJECT_DIR$/bookmyroom/models.py" />
         <option value="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/dashboard.html" />
+        <option value="$PROJECT_DIR$/bookmyroom/forms.py" />
+        <option value="$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html" />
       </list>
     </option>
   </component>
@@ -612,7 +604,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="7" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21214451" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1015,14 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1038,16 +1022,6 @@
         <state relative-caret-position="415">
           <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookmyroom/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1099,6 +1073,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bookmyroom/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2430">
+          <caret line="162" column="9" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bookmyroom/templates/bookmyroom/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1109,13 +1093,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmyroom/views.py">
+    <entry file="file://$PROJECT_DIR$/bookmyroom/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="162" column="9" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
+        <state relative-caret-position="180">
+          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmyroom/templates/bookmyroom/book_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

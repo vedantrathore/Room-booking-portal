@@ -23,7 +23,7 @@
             <p>Sorry the room is already booked from {{ in_time }} - {{ out_time }} by {{ username }}</p>
         </div>
     {% endif %}
-    <form method="POST" class="">
+    <form method="POST" onsubmit="return confirm('Do you really want to submit the form?');"class="">
         {% csrf_token %}
         {{ form|bootstrap_horizontal }}
         <br>
