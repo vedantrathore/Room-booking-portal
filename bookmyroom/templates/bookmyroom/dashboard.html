@@ -1,24 +1,37 @@
 {% extends 'bookmyroom/base.html' %}
 {% block content %}
-    <p>Date: <label for="datepicker"></label><input type="text" id="datepicker"></p>
+{#    <p>Date: <label for="datepicker"></label><input type="text" id="datepicker"></p>#}
+    <div id="paginator"></div>
     {% for room in room_booking %}
-                <div class="w3-row w3-container w3-col m4 l3" style="margin:50px">
+        <div class="w3-row w3-container w3-col m4 l3" style="margin:50px">
             <div id ="booking" class="card card-inverse card-info text-xs-center">
                 <div class="card-block">
-                <h4 class="card-title">{{ room.room_name.room_name }}</h4>
+                    <h4 class="card-title">{{ room.room_name.room_name }}</h4>
                     <p id="date" class="card-text">Occupied on : {{ room.date }}<br></p>
-{#                <p class="card-text">Occupancy : {{ room.room_name.room_occupancy }}</p>#}
-                <p class="card-text">Occupied between : {{ room.in_time }} - {{ room.out_time }}<br></p>
-                <p class="card-text">Occupied by : {{ room.user.name }}<br></p>
-                    </div>
+                    <p class="card-text">Occupied between : {{ room.in_time }} - {{ room.out_time }}<br></p>
+                    <p class="card-text">Occupied by : {{ room.user.name }}<br></p>
+                </div>
             </div>
         </div>
-
-
     {% endfor %}
     <script>
-    //motive is to hide whole division if date doesnt match
-    if (document.getElementById("datepicker").value != document.getElementById("date").innerHTML)$('#booking .show').hide();
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+    today = yyyy+'/'+mm+'/'+dd;
+    var options = {
+    selectedDate: today,
+    selectedDateFormat:  'YYYY-MM-DD'}
+    $('#paginator').datepaginator(options);
     </script>
 {% endblock %}
 {#<a href="{% url 'book_new' %}" class="top-menu">#}

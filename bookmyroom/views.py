@@ -1,5 +1,6 @@
 from django.shortcuts import *
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 try:
     from django.db.models.loading import get_model
 except ImportError:
@@ -7,6 +8,7 @@ except ImportError:
     get_model = apps.get_model
 from .forms import BookForm
 from .models import *
+
 
 error = ""
 
@@ -23,7 +25,7 @@ def index(request):
 @csrf_exempt
 def login(request):
     global error
-    room = Room_Booking.objects.order_by('in_time')
+    room = Room_Booking.objects.order_by('date')
     if 'user_id' in request.COOKIES:
         try:
             user = User.objects.get(id=request.COOKIES['user_id'])  # didn't understand maybe its signup

@@ -1,7 +1,7 @@
 .idea/
 *.egg-info
 *.pot
-*.pyc
+*.py[ca]
 .tox/
 __pycache__
 MANIFEST
