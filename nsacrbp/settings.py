@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmyroom',
     'bootstrapform',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -21,6 +21,7 @@ class Room(models.Model):
         ('room3', 'room3'),
         # add room here
     )
+    # room_image = models.ImageField(null=True)
     room_name = models.TextField(choices=ROOM_CHOICES, default='Conference_Hall')
     room_occupancy = models.IntegerField(null=True)
 
