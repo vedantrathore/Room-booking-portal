@@ -7,9 +7,7 @@
                 <h2>{{ room.room_name.room_name }}</h2>
                 <p>Occupancy : {{ room.room_name.room_occupancy }}</p>
                 <p>Occupied between : {{ room.date }} | {{ room.in_time }} - {{ room.out_time }}<br></p>
-                <a href="{% url 'book_edit' pk=room.pk %}" class="top-menu">
-                    <button type="button" style="alignment :left;">Edit</button>
-                </a>
+
             </div>
         </div>
     {% endfor %}
