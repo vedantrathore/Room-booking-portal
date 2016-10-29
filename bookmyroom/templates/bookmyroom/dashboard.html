@@ -1,30 +1,49 @@
 {% extends 'bookmyroom/base.html' %}
 {% block content %}
-{#    <p>Date: <label for="datepicker"></label><input type="text" id="datepicker"></p>#}
-    <div id="paginator"> </div>
+    {#    <p>Date: <label for="datepicker"></label><input type="text" id="datepicker"></p>#}
+    <div id="paginator"></div>
     {% for room in room_booking %}
-<<<<<<< HEAD
-        <div class="card">
-            <div id ="booking" class="card-header">
-                <h4 class="card-title">{{ room.room_name.room_name }}</h4>
-            </div>
-            <div class="card-block">
-                <p id="date" class="card-text">Occupied on : {{ room.date }}<br></p>
-                <p class="card-text">Occupied between : {{ room.in_time }} - {{ room.out_time }}<br></p>
-                <p class="card-text">Occupied by : {{ room.user.name }}<br></p>
-=======
         <div class="w3-row w3-container w3-col m4 l3" style="margin:50px; display:block">
-            <div id ="booking" class="card card-outline-primary card-info text-xs-center">
+            <div id="booking" class="card card-outline-primary card-info text-xs-center">
                 <div class="card-block">
-                    <h4 class="card-title">{{ room.room_name.room_name }}</h4>
-                    <p id="date" class="card-text">Occupied on : {{ room.date }}<br></p>
-                    <p class="card-text">Occupied between : {{ room.in_time }} - {{ room.out_time }}<br></p>
-                    <p class="card-text">Occupied by : {{ room.user.name }}<br></p>
+                    <h4 class="card-title"><b>{{ room.room_name.room_name }}</b></h4>
+                    <p class="card-text">Occupied on : </p>
+                    <p class="card-text date"><b>{{ room.date }}</b><br></p>
+                    <p class="card-text">Occupied between : <b>{{ room.in_time }} - {{ room.out_time }}</b><br></p>
+                    <p class="card-text">Occupied by : <b>{{ room.user.name }}</b><br></p>
                 </div>
->>>>>>> hiten
             </div>
         </div>
-
+    {% endfor %}
+    <script>
+        function update_cards(selected_date, selected_month, selected_year) {
+            dates = (document.getElementsByClassName('date'));
+            var list=[];
+            for(var j=0;j<dates.length;j++){
+                text = dates[j].innerText;
+                list.push(text);
+                month = text.split('.')[0];
+                date_element = text.split(',')[0].slice(-2);
+                year = text.slice(-5);
+                var monthNumber = ["january", "february", "march","april","may","june","july","august","september","october","november","december"]
+                for(var i=0;i<monthNumber.length;i++){
+                    if(monthNumber[i].indexOf(month.toLowerCase())>=0){
+                        var month_id= i+1;
+                    }
+                }
+                if(month_id!=selected_month||date_element!=selected_date||selected_year!=year){
+                    $(dates[j]).parent().parent().parent().hide();
+                }
+                else{
+                    $(dates[j]).parent().parent().parent().show();
+                }
+{#                console.log(date_element);#}
+{#                console.log(month_id);#}
+{#                console.log(year)#}
+            }
+{#            console.log(convert_date(list[0]))#}
+        }
+    </script>
     <script>
 
         var today = new Date();
@@ -32,26 +51,35 @@
         var mm = today.getMonth()+1; //January is 0!
         var yyyy = today.getFullYear();
 
-        if(dd<10) {
-            dd='0'+dd
+        if (dd < 10) {
+            dd = '0' + dd
         }
 
-        if(mm<10) {
-            mm='0'+mm
+        if (mm < 10) {
+            mm = '0' + mm
         }
-        today = yyyy+'/'+mm+'/'+dd;
+        today = yyyy + '/' + mm + '/' + dd;
         var options = {
-        selectedDate: today,
-        selectedDateFormat:  'YYYY-MM-DD'}
+            selectedDate: today,
+            selectedDateFormat: 'YYYY-MM-DD'
+        }
         $('#paginator').datepaginator(options);
-
+        update_cards(dd, mm, yyyy);
     </script>
-<script>
-    $('#paginator').on('selectedDateChanged', function (event, date) {
-    var selected_date = new Date("{{ room.date.isoformat }}")
-
-    if(selectedDate != selected_date ){document.getElementById('booking').style.display = "none";};})</script>
-{% endfor %}
+    <script>
+        $('#paginator').on('selectedDateChanged', function (event, date) {
+            var object = date.toObject();
+            var selected_date = object.date;
+            var selected_month = object.months;
+            var selected_year = object.years;
+            update_cards(selected_date, selected_month, selected_year);
+{#            console.log('==================');#}
+{#            console.log(selected_date);#}
+{#            console.log(selected_month);#}
+{#            console.log(selected_year);#}
+{#            console.log('==================');#}
+        })
+    </script>
 
 {% endblock %}
 {#<a href="{% url 'book_new' %}" class="top-menu">#}
