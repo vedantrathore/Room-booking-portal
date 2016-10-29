@@ -1,7 +1,5 @@
-from bootstrap3_datetime.widgets import DateTimePicker
 from django import forms
-from sphinx.locale import _
-
+from datetime import datetime
 from .models import *
 
 
@@ -14,8 +12,8 @@ class BookForm(forms.ModelForm):
         }
 
     def validate_form(self):
-        name= self.cleaned_data.get('room_name')
-        date= self.cleaned_data.get('date')
+        name = self.cleaned_data.get('room_name')
+        date = self.cleaned_data.get('date')
         in_time= self.cleaned_data.get('in_time')
         out_time= self.cleaned_data.get('out_time')
         room = Room_Booking.objects.filter(date=date).filter(room_name=name).order_by('in_time').filter(in_time__lte=out_time,out_time__gte=in_time).exists()
