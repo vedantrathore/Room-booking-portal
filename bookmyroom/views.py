@@ -53,7 +53,7 @@ def login(request):
 
 @csrf_exempt
 def signup(request):
-    room = Room_Booking.objects.order_by('in_time')
+    room = Room_Booking.objects.filter(date=timezone.now).order_by('room_name').order_by('in_time')
     if 'user_id' in request.COOKIES:
         try:
             user = User.objects.get(id=request.COOKIES['user_id'])
@@ -102,7 +102,7 @@ def book_new(request):
             room_booking.book_time = timezone.now()
             room_booking.room_status = True  # Implement booking clashes you jackass
             data = form.cleaned_data
-            # if validate_booking(data, room_booking) == 1:
+            form.validate_form();
             #     pass
             # else:
             #     return render(request, 'bookmyroom/book_edit.html', {'error': 1,'username':room_booking.user.name,'in_time':room_booking.in_time,'out_time':room_booking.out_time,'form':form})
