@@ -1,13 +1,14 @@
 {% extends 'bookmyroom/base.html' %}
 {% block content %}
-    <h3>Rooms booked by you : </h3>
+    <h3 align="center">Rooms booked by you : </h3>
     {% for room in rooms %}
-        <div class="w3-row w3-container" style="margin:50px">
-            <div class="w3-topbar w3-border-amber w3-padding-top">
-                <h2>{{ room.room_name.room_name }}</h2>
-                <p>Occupancy : {{ room.room_name.room_occupancy }}</p>
-                <p>Occupied between : {{ room.date }} | {{ room.in_time }} - {{ room.out_time }}<br></p>
-
+        <div class="w3-row w3-container w3-col m4 l3" style="margin:50px; display:block">
+            <div class="card card-outline-primary card-info text-xs-center">
+                <div class="card-block">
+                    <h4 class="card-title"><b>{{ room.room_name.room_name }}</b></h4>
+                    <p class="card-text">Occupancy : <p><b>{{ room.room_name.room_occupancy }}</b></p></p>
+                    <p class="card-text">Occupied between : <p><b>{{ room.date }} | {{ room.in_time }} - {{ room.out_time }}</b></p<br></p>
+                </div>
             </div>
         </div>
     {% endfor %}

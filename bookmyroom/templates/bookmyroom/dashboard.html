@@ -2,6 +2,8 @@
 {% block content %}
     {#    <p>Date: <label for="datepicker"></label><input type="text" id="datepicker"></p>#}
     <div id="paginator"></div>
+    <br>
+    <h3 align="center">Rooms Booked Today</h3>
     {% for room in room_booking %}
         <div class="w3-row w3-container w3-col m4 l3" style="margin:50px; display:block">
             <div id="booking" class="card card-outline-primary card-info text-xs-center">
@@ -9,7 +11,7 @@
                     <h4 class="card-title"><b>{{ room.room_name.room_name }}</b></h4>
                     <p class="card-text">Occupied on : </p>
                     <p class="card-text date"><b>{{ room.date }}</b><br></p>
-                    <p class="card-text">Occupied between : <b>{{ room.in_time }} - {{ room.out_time }}</b><br></p>
+                    <p class="card-text">Occupied between :</p><p> <b>{{ room.in_time }} - {{ room.out_time }}</b><br></p>
                     <p class="card-text">Occupied by : <b>{{ room.user.name }}</b><br></p>
                 </div>
             </div>
@@ -37,9 +39,9 @@
                 else{
                     $(dates[j]).parent().parent().parent().show();
                 }
-{#                console.log(date_element);#}
-{#                console.log(month_id);#}
-{#                console.log(year)#}
+                console.log(date_element);
+                console.log(month_id);
+                console.log(year)
             }
 {#            console.log(convert_date(list[0]))#}
         }
@@ -70,14 +72,14 @@
         $('#paginator').on('selectedDateChanged', function (event, date) {
             var object = date.toObject();
             var selected_date = object.date;
-            var selected_month = object.months;
+            var selected_month = object.months+1;
             var selected_year = object.years;
             update_cards(selected_date, selected_month, selected_year);
-{#            console.log('==================');#}
-{#            console.log(selected_date);#}
-{#            console.log(selected_month);#}
-{#            console.log(selected_year);#}
-{#            console.log('==================');#}
+            console.log('==================');
+            console.log(selected_date);
+            console.log(selected_month);
+            console.log(selected_year);
+            console.log('==================');
         })
     </script>
 

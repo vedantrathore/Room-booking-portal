@@ -1,5 +1,7 @@
 from bootstrap3_datetime.widgets import DateTimePicker
 from django import forms
+from sphinx.locale import _
+
 from .models import *
 
 
@@ -10,6 +12,7 @@ class BookForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'id':'datepicker'}),
         }
+
     def validate_form(self):
         name= self.cleaned_data.get('room_name')
         date= self.cleaned_data.get('date')
@@ -17,7 +20,7 @@ class BookForm(forms.ModelForm):
         out_time= self.cleaned_data.get('out_time')
         room = Room_Booking.objects.filter(date=date).filter(room_name=name).order_by('in_time').filter(in_time__lte=out_time,out_time__gte=in_time).exists()
         if room:
-            raise forms.ValidationError("Room not Available in this time period check your dashboard")
+            raise forms.ValidationError("Room not Available in this time period. Please check your dashboard")
         else:
             pass
 
