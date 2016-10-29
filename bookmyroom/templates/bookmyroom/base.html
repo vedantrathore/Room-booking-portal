@@ -17,6 +17,8 @@
 <script src="{% static 'js/moment.js' %}"></script>
 <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
 <script src="{% static 'js/bootstrap-datepaginator.js' %}"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 <script>
     $(function () {
         $("#datepicker").datepicker();
@@ -29,7 +31,11 @@
 </script>
 <body>
 
+<<<<<<< HEAD
 <ul class="w3-navbar navbar-inverse">
+=======
+<ul class="w3-navbar">
+>>>>>>> hiten
     <li><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'book_new' %}">Book</a></li>
     <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
