@@ -25,7 +25,7 @@ def index(request):
 @csrf_exempt
 def login(request):
     global error
-    room = Room_Booking.objects.order_by('date')
+    room = Room_Booking.objects.order_by('date', 'room_name', 'in_time')
     if 'user_id' in request.COOKIES:
         try:
             user = User.objects.get(id=request.COOKIES['user_id'])  # didn't understand maybe its signup
@@ -53,7 +53,7 @@ def login(request):
 
 @csrf_exempt
 def signup(request):
-    room = Room_Booking.objects.filter(date=timezone.now).order_by('room_name').order_by('in_time')
+    room = Room_Booking.objects.order_by('date','room_name','in_time')
     if 'user_id' in request.COOKIES:
         try:
             user = User.objects.get(id=request.COOKIES['user_id'])
