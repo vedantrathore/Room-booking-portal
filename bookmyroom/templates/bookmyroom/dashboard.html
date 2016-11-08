@@ -3,6 +3,13 @@
     <div id="paginator"></div>
     <br>
     <h3 align="center">Rooms Booked Today</h3>
+    <div class="no_room">
+        <br>
+        <br>
+        <h4 align="center" style="padding-bottom: 200px" > No Rooms booked for today. </h4>
+        <br>
+        <br>
+    </div>
     {% for room in room_booking %}
         <div class="w3-row w3-container w3-col m4 l3" style="margin:50px; display:block">
             <div id="booking" class="card card-outline-primary card-info text-xs-center">
@@ -19,7 +26,7 @@
     <script>
         function update_cards(selected_date, selected_month, selected_year) {
             dates = (document.getElementsByClassName('date'));
-            var list=[];
+            var list=[],count=0;
             for(var j=0;j<dates.length;j++){
                 text = dates[j].innerText;
                 list.push(text);
@@ -37,10 +44,14 @@
                 }
                 else{
                     $(dates[j]).parent().parent().parent().show();
+                    count++;
                 }
-                console.log(date_element);
-                console.log(month_id);
-                console.log(year)
+            }
+            if(count==0){
+                $(document.getElementsByClassName('no_room')).show();
+            }
+            else{
+                $(document.getElementsByClassName('no_room')).hide();
             }
 {#            console.log(convert_date(list[0]))#}
         }
@@ -65,7 +76,7 @@
             selectedDateFormat: 'YYYY-MM-DD'
         }
         $('#paginator').datepaginator(options);
-        update_cards(dd, mm, yyyy);
+
     </script>
     <script>
         $('#paginator').on('selectedDateChanged', function (event, date) {
@@ -74,12 +85,29 @@
             var selected_month = object.months+1;
             var selected_year = object.years;
             update_cards(selected_date, selected_month, selected_year);
-            console.log('==================');
-            console.log(selected_date);
-            console.log(selected_month);
-            console.log(selected_year);
-            console.log('==================');
-        })
+{#            console.log('==================');#}
+{#            console.log(selected_date);#}
+{#            console.log(selected_month);#}
+{#            console.log(selected_year);#}
+{#            console.log('==================');#}
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            update_cards(dd, mm, yyyy);
+        });
     </script>
 
 {% endblock %}

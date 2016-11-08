@@ -3,6 +3,7 @@
     {% load bootstrap %}
     <div class="container">
     <h1>New Booking</h1>
+    <br>
     {% if error %}
         {#        <div id="myModal" class="modal fade" role="dialog">#}
         {#            <div class="modal-dialog">#}
@@ -29,14 +30,61 @@
     {% endif %}
     <form method="POST" class="">
         {% csrf_token %}
-        {{ form|bootstrap_horizontal }}
+        {{ form.room_name|bootstrap_horizontal}}
         <br>
         <br>
-        <div class="col-md-4 text-center">
+        <br>
+        {{ form.date|bootstrap_horizontal }}
+        <br>
+        <br>
+        {{ form.in_time|bootstrap_horizontal }}
+        <br>
+        <br>
+        {{ form.out_time|bootstrap_horizontal }}
+        <br>
+        <br>
+        <div class=" text-center">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
-    <br>
+{#    <form class="form-horizontal" action="" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>#}
+{#    {% csrf_token %}#}
+{#    {{ form.media }}#}
+{#    {% if form.errors %}#}
+{#        <div class="alert alert-error">#}
+{#            <ul>#}
+{#                {% for error in form.non_field_errors %}#}
+{#                    <li>{{ error }}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    {% for field in form.visible_fields %}#}
+{#        <div class="control-group {{ field.html_name }} {% if field.errors %}error{% endif %}">#}
+{#            <label class="control-label">{{ field.label }}{% if field.field.required %} *{% endif %}</label>#}
+{#            <div class="controls">#}
+{#                {{ field }}#}
+{#                {% if field.errors %}<span class="help-inline">{{ field.errors.as_text }}</span>{% endif %}#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#    {% for field in form.hidden_fields %}#}
+{#        {{ field }}#}
+{#    {% endfor %}#}
+{##}
+{#    {% block formsets %}#}
+{#        {% for formset in inlines %}#}
+{#            {% include "inline_formset.html" with formset=formset %}#}
+{#        {% endfor %}#}
+{#    {% endblock formsets %}#}
+{##}
+{#    <div class="form-actions">#}
+{#        <input class="btn btn-primary btn-large" type="submit" value="Submit"/>#}
+{#        {% block extra_buttons %}#}
+{#        {% endblock extra_buttons %}#}
+{#    </div>#}
+{#</form>#}
+        <br>
         <br>
     </div>
 {% endblock %}

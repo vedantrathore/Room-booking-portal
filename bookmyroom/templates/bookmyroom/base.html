@@ -30,6 +30,14 @@
     });
 </script>
 <style>
+    html,body{height: 100%}
+    #footer {
+        clear: both;
+        position: relative;
+        z-index: 10;
+        height: 3em;
+        margin-top: -3em;
+    }
 </style>
 <body>
 <ul class="w3-navbar navbar-inverse">
@@ -48,5 +56,12 @@
 </div>
 {% block content %}
 {% endblock %}
+<br>
+<div id="footer" style="padding-top: 100px;padding-bottom: 50px">
+    <div align="center">
+        Copyrights Digital Ops Team IIT Guwahati<br>
+        Developed by <a href="https://www.facebook.com/vedantrathore13">Vedant Rathore</a> and <a href="https://www.facebook.com/hitensethiya1">Hiten Sethia</a>
+    </div>
+</div>
 </body>
 </html>
