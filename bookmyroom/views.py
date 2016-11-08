@@ -1,6 +1,5 @@
 from django.shortcuts import *
 from django.views.decorators.csrf import csrf_exempt
-from datetime import datetime
 try:
     from django.db.models.loading import get_model
 except ImportError:
@@ -32,7 +31,7 @@ def login(request):
         except Exception as E:
             error = "error 1"
             print (E)
-            return HttpResponseRedirect('index')
+            return HttpResponseRedirect('/')
         else:
             return render(request, 'bookmyroom/dashboard.html', {'room_booking': room})  # possible mistake
     elif 'username' in request.POST and 'password' in request.POST:
@@ -45,10 +44,10 @@ def login(request):
         except Exception as E:
             error = "error 2"
             print (E)
-            return HttpResponseRedirect('index')
+            return HttpResponseRedirect('/')
     else:
         error = "error 3"
-        return HttpResponseRedirect('index')
+        return HttpResponseRedirect('/')
 
 
 @csrf_exempt
@@ -60,7 +59,7 @@ def signup(request):
         except Exception as E:
             print (E)
             error = "error 4"
-            return HttpResponseRedirect('index')
+            return HttpResponseRedirect('/')
         else:
             return render(request, 'bookmyroom/dashboard.html', {'room_booking': room})  # possible mistake
     elif 'username' in request.POST and 'password' in request.POST:
@@ -79,14 +78,14 @@ def signup(request):
         except Exception as E:
             error = "error 5"
             print (E)
-            return HttpResponseRedirect('index')
+            return HttpResponseRedirect('/')
     else:
-        return HttpResponseRedirect('index')
+        return HttpResponseRedirect('/')
 
 
 @csrf_exempt
 def logout(request):
-    response = HttpResponseRedirect('index')
+    response = HttpResponseRedirect('/')
     response.delete_cookie('user_id')
     return response
 
