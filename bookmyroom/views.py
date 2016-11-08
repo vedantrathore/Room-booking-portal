@@ -86,7 +86,7 @@ def signup(request):
 
 @csrf_exempt
 def logout(request):
-    response = HttpResponseRedirect('index')
+    response = HttpResponseRedirect('/')
     response.delete_cookie('user_id')
     return response
 

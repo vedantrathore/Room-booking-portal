@@ -20,7 +20,7 @@ from bookmyroom.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'index', index,name='index'),
+    url(r'^$', index,name='index'),
     url(r'login',login,name='login'),
     url(r'signup',signup,name='signup'),
     url(r'book/new/$', book_new,name='book_new'),
