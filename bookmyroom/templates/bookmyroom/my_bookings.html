@@ -1,6 +1,13 @@
 {% extends 'bookmyroom/base.html' %}
 {% block content %}
     <h3 align="center">Rooms booked by you : </h3>
+    {% if rooms|length == 0 %}
+        <br>
+        <br>
+        <h4 align="center" style="padding-bottom: 200px" > No Rooms booked by you yet. Book <a href="{% url 'book_new' %}">here</a> </h4>
+        <br>
+        <br>
+    {% endif %}
     {% for room in rooms %}
         <div class="w3-row w3-container w3-col m4 l3" style="margin:50px; display:block">
             <div class="card card-outline-primary card-info text-xs-center">
