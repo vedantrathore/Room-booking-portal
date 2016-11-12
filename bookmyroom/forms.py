@@ -23,7 +23,17 @@ class BookForm(forms.ModelForm):
             pass
 
 
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = User
+        exclude = ['email']
+        widgets={
+            'username':forms.TextInput(attrs={'type':'text','label':'Webmail ID','placeholder':'Webmail ID (without @iitg.ernet.in)'}),
+            'password': forms.TextInput(attrs={'type': 'password', 'label': 'Password','placeholder':'Webmail Password'})
+        }
 
-
+    # username = forms.CharField()
+    # password = forms.CharField()
+    # server = forms.CharField(max_length=10,choices=SERVER_CHOICES)
 
 

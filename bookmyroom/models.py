@@ -3,16 +3,21 @@ from django.utils import timezone
 from datetime import *
 
 
+SERVER_CHOICES = (
+    ('202.141.80.12', 'Teesta'),
+    ('202.141.80.9', 'Naambor'),
+    ('202.141.80.10', 'Disang'),
+    ('202.141.80.11', 'Tamdil'),
+    ('202.141.80.13', 'Dikrong')
+)
 class User(models.Model):
-    name = models.CharField(max_length=35)
+    username = models.CharField(max_length=35)
     password = models.CharField(max_length=20)
-    # rooms = models.ManyToManyField(Room)
     email = models.CharField(max_length=200)
-
-    # rooms=models.ForeignKey(Room_Booking)
+    server = models.CharField(max_length=10,choices=SERVER_CHOICES,default='Teesta')
 
     def __unicode__(self):
-        return self.name
+        return self.username
 
 
 class Room(models.Model):

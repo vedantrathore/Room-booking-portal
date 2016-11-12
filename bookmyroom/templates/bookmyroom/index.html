@@ -1,9 +1,10 @@
 {% load staticfiles %}
+{% load bootstrap %}
 <html>
 <head>
     <meta charset="utf-8">
     <title>Login Or Signup</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap_min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap_min.css' %}">
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap3.js' %}"></script>
     <script>
@@ -155,67 +156,14 @@
 <div class="container">
     <form action="login" method="post">
         <div class="form-group row">
-            <!--<div class="container">
-    <form action="login" method="post">-->
-            <!--<div class="form-group row">
->>>>>>> 06afb4da9956cc5a918cda48fad6da3b3ec0069c
-            {% csrf_token %}
-            <label for="inputloginname" class="col-sm-2 col-form-label">Username</label>
-            <div class="col-sm-10">
-                <input type="text" placeholder="Username" class="form-control" id="inputloginname" name="username">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputloginpassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" placeholder="Password" class="form-control" id="inputloginpassword"
-                       name="password">
-            </div>
-        </div>
-        <p><a href="#">Forgot Password?</a></p><br>
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-</div>
-<h2>Signup</h2><br>
-<div class="container">
-    <form action="signup" method="post">
-        <div class="form-group row">
-            {% csrf_token %}
-            <div class="form-group row">
-                <label for="inputsignupname" class="col-sm-2 col-form-label">Username</label>
-                <div class="col-sm-10"><input type="text" placeholder="Username" class="form-control"
-                                              id="inputsignupname" name="username"></div>
-            </div>
-            <div class="form-group row">
-                <label for="inputsignuppassword" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10"><input type="password" placeholder="Password" class="form-control"
-                                              id="inputsignuppassword" name="password"></div>
-            </div>
-            <div class="form-group row">
-                <label for="inputsignupemail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10"><input type="email" placeholder="Email" class="form-control"
-                                              id="inputsignupemail" name="email"></div>
-            </div>
-        </div>
-<<<<<<< HEAD
-        <button type="submit" class="btn btn-primary">Signup</button>
-    </form>
-</div>
-</body>
-</html>
-=======
-        <button type="submit" class="btn btn-primary">Signup</button> -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-login">
                             <div class="panel-heading">
                                 <div class="row">
-                                    <div class="col-xs-6">
+                                    <div class="">
                                         <a href="#" class="active" id="login-form-link">Login</a>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <a href="#" id="register-form-link">Register</a>
                                     </div>
                                 </div>
                                 <hr>
@@ -223,76 +171,20 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form id="login-form" action="login" method="post" role="form"
-                                              style="display: block;">{% csrf_token %}
-                                            <div class="form-group">
-                                                <input type="text" name="username" id="inputloginname"
-                                                       class="form-control" placeholder="Username" value="">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="inputloginpassword"
-                                                        class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="form-group text-center">
-                                                <input type="checkbox"  class="" name="remember"
-                                                       id="remember">
-                                                <label for="remember"> Remember Me</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="login-submit" id="login-submit"
-                                                                class="form-control btn btn-login"
-                                                               value="Log In">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--<div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="text-center">
-                                                            <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        </form>
-                                        <form id="register-form" action="signup" method="post" role="form"
-                                              style="display: none;">{% csrf_token %}
-                                            <div class="form-group">
-                                                <input type="text" name="username" id="inputsignupname"
-                                                       class="form-control" placeholder="Username" value="">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email"
-                                                       class="form-control" placeholder="Email Address" value="">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password" id="inputsignuppassword"
-                                                        class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="confirm_password" id="confirm_password"
-                                                        class="form-control"
-                                                       placeholder="Confirm Password"/><span id='message'></span>
-
-                                            </div>
-                                            <script>
-                                                $('#confirm_password').on('keyup', function () {
-                                                    if ($(this).val() == $('#inputsignuppassword').val()) {
-                                                        document.getElementById("confirm_password").style.borderColor = "green";
-                                                    } else document.getElementById("confirm_password").style.borderColor = "red";
-                                                });
-
-                                            </script>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="register-submit" id="register-submit"
-                                                                class="form-control btn btn-register"
-                                                               value="Register Now">
-                                                    </div>
-                                                </div>
+                                        <form method="POST" class="">
+                                            {% csrf_token %}
+                                            {{ form.username|bootstrap_horizontal }}
+                                            <br>
+                                            <br>
+                                            <br>
+                                            {{ form.password|bootstrap_horizontal }}
+                                            <br>
+                                            <br>
+                                            {{ form.server|bootstrap_horizontal }}
+                                            <br>
+                                            <br>
+                                            <div class=" text-center">
+                                                <button type="submit" class="btn btn-primary">Login</button>
                                             </div>
                                         </form>
                                     </div>
@@ -303,7 +195,7 @@
                 </div>
             </div>
         </div>
-    </form>q
+    </form>
 </div>
 
 </body>
