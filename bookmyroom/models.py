@@ -22,14 +22,15 @@ class User(models.Model):
 
 class Room(models.Model):
     ROOM_CHOICES = (
-        ('Conference_Hall', 'Conference Hall'),
-        ('Sports_Office', 'Sports Office'),
-        ('room3', 'room3'),
+        ('Conference Hall', 'Conference Hall'),
+        ('Sports Office', 'Sports Office'),
+        ('Anchorenza and Radio G', 'Anchorenza and Radio G'),
+	('Tech Board Room','Tech Board Room'),
         # add room here
     )
     # room_image = models.ImageField(null=True)
-    room_name = models.TextField(choices=ROOM_CHOICES, default='Conference_Hall')
-    room_occupancy = models.IntegerField(null=True)
+    room_name = models.CharField(choices=ROOM_CHOICES,max_length=50, default='conference_hall')
+    room_occupancy = models.IntegerField(null=True,blank=True)
 
     def __unicode__(self):
         return self.room_name

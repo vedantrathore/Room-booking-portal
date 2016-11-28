@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmyroom',
     'bootstrapform',
-    'django.contrib.sites',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -126,6 +125,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+SITE_ID = 1
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
