@@ -1,5 +1,4 @@
 from django import forms
-from datetime import datetime
 from .models import *
 
 
@@ -16,8 +15,12 @@ class BookForm(forms.ModelForm):
         date = self.cleaned_data.get('date')
         in_time= self.cleaned_data.get('in_time')
         out_time= self.cleaned_data.get('out_time')
-        room = Room_Booking.objects.filter(date=date).filter(room_name=name).order_by('in_time').filter(in_time__lte=out_time,out_time__gte=in_time).exists()
-        if room:
+        if out_time <= in_time:
+            raise forms.ValidationError("Please enter a valid In and Out time")
+        room_clash_check = Room_Booking.objects.filter(date=date).filter(room_name=name).order_by('in_time').filter(in_time__lte=out_time,out_time__gte=in_time).exists()
+        if date < datetime.now().date():
+            raise forms.ValidationError("Please select a valid Date.")
+        if room_clash_check:
             raise forms.ValidationError("Room not Available in this time period. Please check your dashboard")
         else:
             pass
