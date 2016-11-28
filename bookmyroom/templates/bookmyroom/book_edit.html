@@ -5,22 +5,6 @@
     <h1>New Booking</h1>
     <br>
     {% if error %}
-        {#        <div id="myModal" class="modal fade" role="dialog">#}
-        {#            <div class="modal-dialog">#}
-        {#                <div class="modal-content">#}
-        {#                    <div class="modal-header">#}
-        {#                        <button type="button" class="close" data-dismiss="modal">&times;</button>#}
-        {#                        <h4 class="modal-title">Error</h4>#}
-        {#                    </div>#}
-        {#                    <div class="modal-body">#}
-        {#                        <p>Sorry the room is already booked from {{ in_time }} - {{ out_time }} by {{ username }}</p>#}
-        {#                    </div>#}
-        {#                    <div class="modal-footer">#}
-        {#                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
         <div class="alert alert-danger alert-dismissable fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -47,43 +31,6 @@
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
-{#    <form class="form-horizontal" action="" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>#}
-{#    {% csrf_token %}#}
-{#    {{ form.media }}#}
-{#    {% if form.errors %}#}
-{#        <div class="alert alert-error">#}
-{#            <ul>#}
-{#                {% for error in form.non_field_errors %}#}
-{#                    <li>{{ error }}</li>#}
-{#                {% endfor %}#}
-{#            </ul>#}
-{#        </div>#}
-{#    {% endif %}#}
-{#    {% for field in form.visible_fields %}#}
-{#        <div class="control-group {{ field.html_name }} {% if field.errors %}error{% endif %}">#}
-{#            <label class="control-label">{{ field.label }}{% if field.field.required %} *{% endif %}</label>#}
-{#            <div class="controls">#}
-{#                {{ field }}#}
-{#                {% if field.errors %}<span class="help-inline">{{ field.errors.as_text }}</span>{% endif %}#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#    {% for field in form.hidden_fields %}#}
-{#        {{ field }}#}
-{#    {% endfor %}#}
-{##}
-{#    {% block formsets %}#}
-{#        {% for formset in inlines %}#}
-{#            {% include "inline_formset.html" with formset=formset %}#}
-{#        {% endfor %}#}
-{#    {% endblock formsets %}#}
-{##}
-{#    <div class="form-actions">#}
-{#        <input class="btn btn-primary btn-large" type="submit" value="Submit"/>#}
-{#        {% block extra_buttons %}#}
-{#        {% endblock extra_buttons %}#}
-{#    </div>#}
-{#</form>#}
         <br>
         <br>
     </div>

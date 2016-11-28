@@ -17,7 +17,6 @@ from .models import *
 error = ""
 
 
-# possible mistake taken from #1
 def index(request):
     global error
     if 'user_id' in request.COOKIES:
@@ -104,31 +103,7 @@ def book_new(request):
     return render(request, 'bookmyroom/book_edit.html', {'form': form})
 
 
-# def mail(request, pk):
-#     pass
-#
-
 def my_bookings(request):
     user = User.objects.get(id=request.COOKIES['user_id'])
     rooms = Room_Booking.objects.filter(user__username=user.username)
     return render(request, 'bookmyroom/my_bookings.html', {'rooms': rooms})
-
-#
-# def book_detail(request, pk):
-#     room = get_object_or_404(Room_Booking, pk=pk)
-#     return render(request, 'bookmyroom/book_detail.html', {'room_booking': room})  # here there could be a problem
-
-
-# def book_edit(request, pk):
-#     room = get_object_or_404(Room_Booking, pk=pk)
-#     if request.method == "POST":
-#         form = BookForm(request.POST, instance=room)
-#         if form.is_valid():
-#             room_booking = form.save(commit=False)
-#             # room_booking.user = request.user
-#             room_booking.book_time = timezone.now()
-#             room_booking.save()
-#             return redirect('my_bookings')
-#     else:
-#         form = BookForm(instance=room)
-#     return render(request, 'bookmyroom/book_edit.html', {'form': form})

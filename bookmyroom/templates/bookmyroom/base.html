@@ -45,13 +45,15 @@
     }
 </style>
 <body>
-<ul class="w3-navbar navbar-inverse">
-    <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'book_new' %}">Book</a></li>
-    <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
-    <li class="w3-right"><a class="w3-red" href="{% url 'logout' %}">Logout</a></li>
-    <li class="w3-right"><a href="https://goo.gl/forms/zos1lJQW3YDsjU3z1">Feedback</a></li>
-</ul>
+<div class="w3-top">
+    <ul class="w3-navbar navbar-inverse">
+        <li><a class="w3-text-white w3-hover-yellow" href="{% url 'index' %}">Home</a></li>
+        <li><a class="w3-text-white w3-hover-yellow" href="{% url 'book_new' %}">Book</a></li>
+        <li><a class="w3-text-white w3-hover-yellow" href="{% url 'my_bookings' %}">My Bookings</a></li>
+        <li class="w3-right"><a class="w3-red" href="{% url 'logout' %}">Logout</a></li>
+        <li class="w3-right"><a class="w3-text-white w3-hover-yellow" href="https://goo.gl/forms/zos1lJQW3YDsjU3z1">Feedback</a></li>
+    </ul>
+</div>
 <div class="w3-display-container" style="margin-bottom:50px">
     <img src="{% static 'img/iitg.jpg' %}" style="width:100%">
     <div class="w3-display-bottomleft w3-container w3-amber w3-hover-orange w3-hide-small"
